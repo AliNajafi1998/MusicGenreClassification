@@ -7,7 +7,7 @@ DATESET_PATH = os.path.join(os.getcwd(), 'Data/genres_original')
 JSON_PATH = os.path.join(os.getcwd(), 'data.json')
 DURATION = 30  # seconds
 SAMPLE_RATE = 22050
-SAMPLES_PRE_TRACK = SAMPLE_RATE * DURATION
+SAMPLES_PER_TRACK = SAMPLE_RATE * DURATION
 
 
 def save_mfcc(dataset_path, json_path, n_mfcc=13, n_ftt=2048, hop_length=512, num_segments=5):
@@ -16,7 +16,7 @@ def save_mfcc(dataset_path, json_path, n_mfcc=13, n_ftt=2048, hop_length=512, nu
         "mfcc": [],
         "labels": []
     }
-    num_samples_per_segment = int(SAMPLES_PRE_TRACK / num_segments)
+    num_samples_per_segment = int(SAMPLES_PER_TRACK / num_segments)
     expected_num_mfcc_vectors_per_segment = math.ceil(num_samples_per_segment / hop_length)
 
     for i, (dir_path, dir_names, file_names) in enumerate(os.walk(dataset_path)):
